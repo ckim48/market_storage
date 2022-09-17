@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+    </script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Unmanned Store Dashboard</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="../static/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="../static/css/sb-admin-2.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Unmanned Store Dash Board</h1>
+                        <a href="#" class="mt-1 d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">Update</a>
+                    </div>
+
+                    <!-- Content Row -->
+                    <div class="row">
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-weekly shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                Items sold the most (weekly)</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{top1_week}}</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-monthly shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                Items sold the most (monthly)</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{top1_month}}</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Earnings (Yearly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-yearly h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Items sold the most (yearly)
+                                            </div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{top1_year}}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fa-regular fa-calendar-days"></i> 
+                                            <!-- use fontawesome.com for images-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pending Requests Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-profit h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                Profit</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{t_profit}} Won</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-comments fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Content Row -->
+
+                    <div class="row">
+
+                        <!-- Area Chart -->
+                        <div class="col-xl-8 col-lg-7 mb-5">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">Cumulative Sales</h6>
+
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                        <canvas id="myAreaChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pie Chart -->
+                        <div class="col-xl-4 col-lg-5 mb-5">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">Items with greatest margin</h6>
+                                    
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                        <canvas id="myPieChart"style = "height: 20vh; width: 13vw"></canvas>
+     
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class = "container-fluid">
+                        <h3 class="m-0 font-weight-bold text-primary2 mb-3"> Storage</h3>
+                        <table class = "table table-striped">
+                            <thead>
+                                <th scope = "col">#</th>
+                                <th scope = "col">Item</th>
+                                <th scope = "col">Total Quantity</th>
+                                <th scope = "col">Left Quantity</th>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <th scope = "row">1</th>
+                                    <td>Chocopie</td>
+                                    <td>100</td>
+                                    <td>{{lst3[0]}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope = "row">2</th>
+                                    <td>Coke</td>
+                                    <td>100</td>
+                                    <td>{{lst3[1]}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope = "row">3</th>
+                                    <td>Eraser</td>
+                                    <td>100</td>
+                                    <td>{{lst3[2]}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope = "row">4</th>
+                                    <td>Fanta</td>
+                                    <td>100</td>
+                                    <td>{{lst3[3]}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope = "row">5</th>
+                                    <td>Haribo</td>
+                                    <td>100</td>
+                                    <td>{{lst3[4]}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope = "row">6</th>
+                                    <td>Homerun</td>
+                                    <td>100</td>
+                                    <td>{{lst3[5]}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope = "row">7</th>
+                                    <td>Pencil</td>
+                                    <td>100</td>
+                                    <td>{{lst3[6]}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope = "row">8</th>
+                                    <td>Pocachip</td>
+                                    <td>100</td>
+                                    <td>{{lst3[7]}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope = "row">9</th>
+                                    <td>Ramen_chips</td>
+                                    <td>100</td>
+                                    <td>{{lst3[8]}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope = "row">10</th>
+                                    <td>Ramen_hot</td>
+                                    <td>100</td>
+                                    <td>{{lst3[9]}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope = "row">11</th>
+                                    <td>Ramen_mild</td>
+                                    <td>100</td>
+                                    <td>{{lst3[10]}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope = "row">12</th>
+                                    <td>Sprite</td>
+                                    <td>100</td>
+                                    <td>{{lst3[11]}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope = "row">13</th>
+                                    <td>White</td>
+                                    <td>100</td>
+                                    <td>{{lst3[12]}}</td>
+                                </tr>
+                            </tbody>    
+                        </table>
+                    </div>    
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Nathan</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+
+
+        var ctx = document.getElementById("myAreaChart").getContext("2d");
+        var obj_list = JSON.parse('{{lst | tojson | safe}}');
+        var accumulate_list = JSON.parse('{{lst2 | tojson | safe}}');
+
+        var myLineChart = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: obj_list,
+            datasets: [{
+              backgroundColor: "rgba(255, 99, 71, 0.4)",
+              borderWidth: 1,
+              data: accumulate_list,
+            }],
+          },
+          options: {
+            legend: {display: false},
+            scales: {
+                y: {
+                    beginAtZero: false},
+            },
+          }
+        });
+        var ctx2 = document.getElementById("myPieChart").getContext("2d");
+        var margin_list = JSON.parse('{{top_margin | tojson | safe}}');
+        var margin_list_value = JSON.parse('{{top_margin_value | tojson | safe}}');
+        var xValues = margin_list;
+        var yValues = margin_list_value
+        var pieColors = ["#EE7868", "#567EC0", "#AB8940", "#3ABD3C"];
+        var Chart = new Chart(ctx2, {
+          type: 'pie',
+          data: {
+            labels: xValues,
+            datasets: [{
+              backgroundColor: pieColors,
+              data: yValues,
+            }],
+          },
+        });    
+    </script>
+
+    <script>
+
+    </script>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="../static/vendor/jquery/jquery.min.js"></script>
+    <script src="../static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="../static/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="../static/js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="../static/vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <!-- <script src="../static/js/demo/chart-pie-demo.js"></script> -->
+
+</body>
+
+</html>
