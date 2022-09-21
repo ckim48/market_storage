@@ -46,11 +46,22 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Unmanned Store Dash Board</h1>
-                        <a href="#" class="mt-1 d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">Update</a>
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4 mt-5">
+                        <h1 class="h3 mb-0 text-gray-800 mt-3">Unmanned Store Dash Board</h1>
+                        <form method = "POST">
+                            <input class="mt-3 d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" type = "submit" name = "open" value = "Update">
+                        </form>
                     </div>
-
+                    {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                            <div class = "alert alert-success alert_dismissible show fade" role = "alert">
+                                <strong>Successfully Updated!</strong>
+                                <button type = "button" class = "close" data-dismiss="alert" aria-label = "Close">
+                                    <span aria-hidden = "true">&times;</span>
+                                </button>
+                            </div>
+                        {% endif %}
+                    {% endwith %}
                     <!-- Content Row -->
                     <div class="row">
 
@@ -64,9 +75,7 @@
                                                 Items sold the most (weekly)</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">{{top1_week}}</div>
                                         </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                                        </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -81,9 +90,6 @@
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                                 Items sold the most (monthly)</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">{{top1_month}}</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -104,10 +110,6 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-auto">
-                                            <i class="fa-regular fa-calendar-days"></i> 
-                                            <!-- use fontawesome.com for images-->
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -123,9 +125,7 @@
                                                 Profit</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">{{t_profit}} Won</div>
                                         </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-comments fa-2x text-gray-300"></i>
-                                        </div>
+
                                     </div>
                                 </div>
                             </div>
