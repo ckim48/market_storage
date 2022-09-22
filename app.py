@@ -135,7 +135,6 @@ def index():
 			t_profit = t_profit + int(i[0])
 
 		temp_list = lst4.copy()
-		print(profit_list, file=sys.stderr)
 		largest = max(lst4)
 		largest_index = lst4.index(largest)
 		largest_item = data_dict2[largest_index]
