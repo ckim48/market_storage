@@ -173,7 +173,7 @@ def index():
 		top_margin_value.append(else_value)
 
 		sqliteConnection.close()
-		return render_template('index.html', lst = lst, lst2= lst2, lst3= lst3,lst_initial=lst_initial top1_week = top1_week, top1_month = top1_month, top1_year = top1_year, t_profit = t_profit, top_margin = top_margin, top_margin_value = top_margin_value)
+		return render_template('index.html', lst = lst, lst2= lst2, lst3= lst3,lst_initial=lst_initial, top1_week = top1_week, top1_month = top1_month, top1_year = top1_year, t_profit = t_profit, top_margin = top_margin, top_margin_value = top_margin_value)
 
 if __name__ == '__main__':
 	app.run(debug = True)
