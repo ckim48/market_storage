@@ -108,9 +108,9 @@ def index():
 		if 
 		top_lst = sorted(count_dict, key = count_dict.get, reverse = True)[:3]
 		if len(top_lst) == 0:
-			top1_week="No purchase in this week"
-		else:
-			top1_week = top_lst[0]
+			top_lst.append("No purchase in this week")
+
+		top1_week = top_lst[0]
 
 		#items sold the most (monthly)
 		month_ago = today - DT.timedelta(days=30)
@@ -121,6 +121,10 @@ def index():
 			count = count_dict.get(i[1],0)+1
 			count_dict [i[1]] = count
 		top_lst = sorted(count_dict, key = count_dict.get, reverse = True)[:3]
+
+		if len(top_lst) == 0:
+			top1_month="No purchase in this month"
+
 		top1_month = top_lst[0]
 
 		#items sold the most (yearly)
@@ -132,6 +136,8 @@ def index():
 			count = count_dict.get(i[1],0)+1
 			count_dict [i[1]] = count
 		top_lst = sorted(count_dict, key = count_dict.get, reverse = True)[:3]
+		if len(top_lst) == 0:
+			top1_year="No purchase in this year"
 		top1_year = top_lst[0]
 
 		data_dict2 = {0: 'Chocopie', 1: 'Ramen_hot', 2: 'Ramen_mild', 3: 'Ramen_chips', 4: 'Pocachip', 5: 'Haribo', 6: 'Coke', 7: 'Sprite',8: 'Fanta', 9: 'White', 10: 'Eraser', 11: 'Pencil', 12: 'Homerun'}
