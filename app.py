@@ -105,9 +105,12 @@ def index():
 		for i in week_lst:
 			count = count_dict.get(i[1],0)+1
 			count_dict [i[1]] = count
-
+		if 
 		top_lst = sorted(count_dict, key = count_dict.get, reverse = True)[:3]
-		top1_week = top_lst[0]
+		if len(top_lst) == 0:
+			top1_week="No purchase in this week"
+		else:
+			top1_week = top_lst[0]
 
 		#items sold the most (monthly)
 		month_ago = today - DT.timedelta(days=30)
