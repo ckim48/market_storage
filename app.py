@@ -25,9 +25,11 @@ def update_DB(parent_dir):
 	data_dict = {0: 'Chocopie', 1: 'Coke', 2: 'Eraser', 3: 'Fanta', 4: 'Haribo', 5: 'Homerun', 6: 'Pencil', 7: 'Pocachip',8: 'Ramen_chips', 9: 'Ramen_hot', 10: 'Ramen_mild', 11: 'Sprite', 12: 'White'}
 	sqliteConnection = sqlite3.connect('static/history.db',timeout = 10)
 	crsr = sqliteConnection.cursor()
+	numFile = 0
 	for subdir, dirs, files in os.walk(parent_dir):
 		for file in files:
 			if not file.startswith('.'):
+				numFile += 1
 				path = os.path.join(subdir, file)
 				if datetime.fromtimestamp(os.path.getctime(path)).strftime("%Y-%m-%d %H:%M:%S"):
 					img = Image.open(path)
@@ -56,13 +58,19 @@ def update_DB(parent_dir):
 					img.close()
 					shutil.move(path, "static/old_images")
 					sqliteConnection.commit()
+	return numFile
 
 @app.route('/', methods = ['POST', 'GET'])
 def index():
 	if request.method == "POST":
-		update_DB("static/images")
-		flash('Successfully Updated')
-		return redirect(url_for('index'))
+		numFile = update_DB("static/images")
+		success = 0
+		if numFile == 0:
+			flash('No item to update', "danger")
+		else: 
+			success = 1
+			flash('Successfully Updated '+ numFile+" items are updated", "success")
+		return redirect(url_for('index'), success = success)
 	else: 
 
 		sqliteConnection = sqlite3.connect('static/history.db')
