@@ -134,6 +134,22 @@ def index():
 
 		top1_month = top_lst[0]
 
+		period_sales = "SELECT * FROM purchase WHERE time_stamp Between ? and ? INTERSECT SELECT * FROM purchase WHERE time_stamp Between ? and ?" + " Between " + AM_start + " and " +AM_end
+		AM_start = "00:00:01"
+		AM_end = "11:59:59"
+		crsr.execute(time_sales, (month_ago,today,AM_start,AM_end))
+		AM_lst = crsr.fetchall()
+		count_dict = {}
+		for i in month_lst:
+			count = count_dict.get(i[1],0)+1
+			count_dict [i[1]] = count
+		top_lst = sorted(count_dict, key = count_dict.get, reverse = True)[:3]
+		top1_AM = top_lst[0]
+
+
+
+
+
 		#items sold the most (yearly)
 		year_ago = today - DT.timedelta(days=365)
 		crsr.execute(time_sales, (year_ago,today))
@@ -189,7 +205,7 @@ def index():
 		top_margin_value.append(else_value)
 
 		sqliteConnection.close()
-		return render_template('index.html', lst = lst, lst2= lst2, lst3= lst3,lst_initial=lst_initial, top1_week = top1_week, top1_month = top1_month, top1_year = top1_year, t_profit = t_profit, top_margin = top_margin, top_margin_value = top_margin_value)
+		return render_template('index.html', lst = lst, lst2= lst2, lst3= lst3,lst_initial=lst_initial, top1_week = top1_week, top1_AM = top1_AM top1_month = top1_month, top1_year = top1_year, t_profit = t_profit, top_margin = top_margin, top_margin_value = top_margin_value)
 
 if __name__ == '__main__':
 	app.run(debug = True)
