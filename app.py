@@ -69,7 +69,8 @@ def index():
 			flash('No item to update', "danger")
 		else: 
 			success = 1
-			flash('Successfully Updated')
+			flash('Successfully Updated '+ numFile+" items are updated", "success")
+		return redirect(url_for('index'))
 	else: 
 
 		sqliteConnection = sqlite3.connect('static/history.db')
